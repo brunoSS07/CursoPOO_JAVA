@@ -4,13 +4,14 @@ package aula01.banco;
  * ContaBanco
  */
 public class ContaBanco {
+
 public int numConta;
 protected String tipoConta;
 private String dono;
 private double saldo;
 private boolean status;
 
-// metodo cosntrutor --> é aquele metodo que sempre será executado semrpe que uma nova classe for instanciada
+// metodo cosntrutor --> é aquele metodo que sempre será executado sempre que uma nova classe for instanciada
 public ContaBanco(){
     //sempre que criar uma conta o saldo será inicializado com 0 e status false
     setSaldo(0);
@@ -19,7 +20,7 @@ public ContaBanco(){
     //status = false;
 }
 
-public int getNumconta() {
+public int getNumConta() {
     return numConta;
 }
 public void setNumconta(int numConta) {
@@ -50,7 +51,6 @@ public void setSaldo(double saldo) {
 public boolean getStatus() {
     return status;
 }
-
 public void setStatus(Boolean status) {
     this.status = status;
 }
@@ -58,43 +58,45 @@ public void setStatus(Boolean status) {
 
 public void abrirConta(String tipoConta){
     setTipoConta(tipoConta);
-    setStatus(true); //status muda pra true ao abrir uma conta
+    setStatus(true); //status muda pra TRUE ao abrir uma conta
     if(tipoConta.equalsIgnoreCase("cc")){
-        setSaldo(50);
+        setSaldo(50); //caso abra uma CC será adicionado R$ 50 no saldo
     } else if(tipoConta.equalsIgnoreCase("cp")){
-        setSaldo(150);
+        setSaldo(150); //caso abra uma CP será adicionado R$ 150 no saldo
     }
     System.out.println("Conta aberta com sucesso!");
 } 
 
 public void fecharConta(){
     if(this.getSaldo() > 0){
-        System.out.println("Conta com dinheiro");
+        System.out.println("Não pode ser fechada! Conta tem dinheiro");
     }else if(this.getSaldo() < 0 ){
         System.out.println("Conta em débito");
     }else{
-        setStatus(false);
+        this.setStatus(false);
+        System.out.println("Conta fechada com sucesso!");
     }
 }
 
 public void depositar(double valor){
-    if(status == true){
-        setSaldo(getSaldo() + valor);
+    if(this.getStatus()){
+        this.setSaldo(this.getSaldo() + valor);
         // saldo = saldo + valor;
     }else{
-        System.out.println("Impossivel depositar");
+        System.out.println("Impossivel depositar! Conta não existe.");
     }
 }
 
 public void sacar(double valor){
-    if(status == true){
-        if(saldo > valor){
-            setSaldo(getSaldo() - valor);
+    if(this.getStatus()){ // conta tem que ser TRUE = ativa
+        if(this.getSaldo() >= valor){ // SALDO tem que ser >= que o VALOR a ser sacado
+            this.setSaldo(this.getSaldo() - valor);
             // saldo = saldo - valor;
+            System.out.println("Saque feito com sucesso.");
         }else{
             System.out.println("Saldo insuficiente");
         }
-    }else{
+    }else{ // caso status esteja FALSE = não existe
         System.out.println("Impossivel Sacar");
     }
 }
@@ -106,15 +108,27 @@ public void pagarMensal(){
     }else if(tipoConta.equalsIgnoreCase("cp")){
         valor = 20;
     }
-    if(status == true){
-        if(saldo > valor){
-            setSaldo(getSaldo() - valor);
+    if(this.getStatus()){
+        if(saldo > valor){ 
+            this.setSaldo(this.getSaldo() - valor);
         }else{
             System.out.println("Saldo insuficiente");
         }
     }else{
-        System.out.println("Impossivel pagar");
+        System.out.println("Impossivel pagar!");
     }
 }
     
+public void estadoAtual(){
+   // System.out.println("Número da Conta:" + getNumConta());
+    //System.out.println("Tipo Conta:" + getTipoConta());
+    //System.out.println("Dono:" + getDono());
+    //System.out.println("Saldo Conta:" + getSaldo());
+    //System.out.println("Status Conta:" + getStatus());
+
+
+    System.out.printf("Número da Conta: %d \nTipo da Conta: %s\nDono: %s\nSaldo: %.2f\nStatus: %b\n",getNumConta(),getTipoConta(),getDono(),getSaldo(),getStatus());
+}
+
+
 }
