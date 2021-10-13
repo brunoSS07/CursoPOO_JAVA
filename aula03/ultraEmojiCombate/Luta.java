@@ -19,6 +19,7 @@ public class Luta {
            this. desafiante = null;
         }
     }
+
     public void lutar(){
         if(this.aprovada){
             System.out.println("### DESAFIADO ###");
@@ -26,7 +27,7 @@ public class Luta {
             System.out.println("### DESAFIANTE ###");
             this.desafiante.apresentar();
 
-            Random aleatorio = new Random(); //gerar um objeto do tipo random, numero aleatorio
+            Random aleatorio = new Random(); //gerar um objeto do tipo random, numero aleatório
             int vencedor = aleatorio.nextInt(3); //gerar 0, 1, ou 2
             System.out.println("***** RESULTADO DA LUTA ******");
             switch(vencedor){
@@ -51,6 +52,8 @@ public class Luta {
             System.out.println("Luta não pode acontecer");
         }
     }
+
+
     public Lutador getDasafiado() {
         return desafiado;
     }
@@ -78,7 +81,5 @@ public class Luta {
     public void setAprovada(boolean aprovada) {
         this.aprovada = aprovada;
     }
-
-    
     
 }

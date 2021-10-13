@@ -5,7 +5,7 @@ public class Lutador {
     private double altura, peso;
     private int vitorias, derrota, empates, idade;
     
-
+    //Método construtor de inicialização
     public Lutador(String nome, String nacionalidade, int idade, double altura, double peso, int vitorias, int derrotas, int empates){
         this.nome = nome;
         this.nacionalidade = nacionalidade;
@@ -22,7 +22,7 @@ public class Lutador {
        System.out.println(String.format("CHEGOU A HORA! Apresentamos o lutador %s\nDiretamente de(a,o) %s\ncom %d anos\npesando %.02f Kg\nPeso: %.02f\n%d vitorias\n%d derrotas\n%d empates", this.getNome(), this.getNacionalidade(), this.getIdade(), this.getAltura(), this.getPeso(), this.getVitorias(), this.getDerrota(),this.getEmpates()));
     }
     public void status(){
-        System.out.println("-------------------------");
+        System.out.println("=============================================");
         System.out.println(this.getNome() + " é um peso " + this.getCategoria());
         System.out.println("Ganhou " + this.getVitorias()+ " vezes");
         System.out.println("Perdeu " + this.getDerrota() + " vezes");
@@ -81,15 +81,15 @@ public class Lutador {
     }
     private void setCategoria() {
         if(this.peso < 52.2){
-            categoria = "Inválido";
+            this.categoria = "Inválido";
         }else if(this.peso <= 70.3){
-            categoria = "Leve";
+            this.categoria = "Leve";
         }else if(this.peso <= 83.9){
-            categoria = "Médio";
+            this.categoria = "Médio";
         }else if(this.peso <= 120 ){
-            categoria = "Pesado";
+            this.categoria = "Pesado";
         }else{
-            categoria = "Inválido";
+            this.categoria = "Inválido";
         }
     }
 

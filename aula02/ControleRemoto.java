@@ -61,7 +61,6 @@ public class ControleRemoto implements Controlador {
     @Override
     public void desligar() {
         setLigado(false);
-        
     }
 
     @Override
@@ -69,7 +68,6 @@ public class ControleRemoto implements Controlador {
         if(getLigado()){
             System.out.println("Fechando menu...");
         }
-        
     }
 
     @Override
@@ -82,7 +80,6 @@ public class ControleRemoto implements Controlador {
     public void ligarMudo() {
         if(this.getLigado() && this.getVolume() > 0){
             this.setVolume(0);
-            
         }
     }
 
